@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".home.HomeNewsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome, User"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_margin="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tabNews"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@drawable/tab_control_bg"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/welcome"
+            android:layout_marginTop="45dp"
+            android:layout_marginStart="20dp"
+            android:text="News"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tabManga"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:layout_toRightOf="@id/tabNews"
+            android:layout_alignTop="@id/welcome"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="-70dp"
+            android:background="@drawable/tab_control_bg"
+            android:text="Manga"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignTop="@id/tabNews"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            app:cardCornerRadius="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+
+            app:cardElevation="20dp">
+
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="20"
+                app:iss_delay="2500"
+                app:iss_period="2500"
+                app:iss_title_background="@drawable/gradient" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/news1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="220dp"
+            android:layout_alignTop="@id/cardView"
+            android:src="@drawable/news1" />
+
+        <ImageView
+            android:id="@+id/news2"
+            android:layout_alignTop="@id/news1"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="200dp"
+            android:src="@drawable/news2" />
+
+    </RelativeLayout>
+
+
+</ScrollView>
