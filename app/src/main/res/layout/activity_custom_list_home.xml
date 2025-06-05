@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.CustomListHome">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:id="@+id/gambarCover"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/judul"
+        android:layout_toRightOf="@id/gambarCover"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="Judul"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/gambarCover"
+        android:layout_alignTop="@id/judul"
+        android:layout_marginTop="40dp"
+        android:id="@+id/synopsis"
+        android:textSize="12dp"
+        android:textColor="@color/white"
+        android:text="Synopsis"/>
+
+
+
+
+</RelativeLayout>

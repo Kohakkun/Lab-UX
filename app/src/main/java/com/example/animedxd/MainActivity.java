@@ -2,23 +2,52 @@ package com.example.animedxd;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.animedxd.databinding.ActivityMainBinding;
+import com.example.animedxd.home.HomeNewsFragment;
+import com.example.animedxd.list.ListFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+
+
+        replaceFragment(new HomeNewsFragment());
+        binding.bottomNav.setBackground(null);
+
+        binding.bottomNav.setOnItemSelectedListener(item -> {
+           if(item.getItemId() == R.id.homeLogo){
+               replaceFragment(new HomeNewsFragment());
+           }
+           else if(item.getItemId() == R.id.listLogo){
+               replaceFragment(new ListFragment());
+           }
+
+            return true;
         });
+
+        //        binding.toolBar.setOnClickListener(item ->{
+//            if(item.getId() == R.id.logOut){
+//
+//            }
+//        });
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
     }
 }

@@ -13,6 +13,13 @@
         android:theme="@style/Theme.AnimeDXD"
         tools:targetApi="31">
         <activity
+            android:name=".list.CustomListList"
+            android:exported="false" />
+        <activity
+            android:name=".home.CustomListHome"
+            android:exported="false"
+            android:theme="@style/Theme.AnimeDXD" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

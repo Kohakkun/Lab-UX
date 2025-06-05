@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/darkBlue"
+    tools:context=".home.HomeMangaFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome, User"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_margin="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tabNews"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@drawable/tab_control_bg"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/welcome"
+            android:layout_marginTop="45dp"
+            android:layout_marginStart="20dp"
+            android:text="News"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tabManga"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:layout_toRightOf="@id/tabNews"
+            android:layout_alignTop="@id/welcome"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="-70dp"
+            android:background="@drawable/tab_control_bg"
+            android:text="Manga"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp">
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
