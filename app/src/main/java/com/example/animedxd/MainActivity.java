@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.animedxd.databinding.ActivityMainBinding;
+import com.example.animedxd.detail.DetailFragment;
 import com.example.animedxd.home.HomeNewsFragment;
 import com.example.animedxd.list.ListFragment;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomNav.setOnItemSelectedListener(item -> {
            if(item.getItemId() == R.id.homeLogo){
-               replaceFragment(new HomeNewsFragment());
+               replaceFragment(new DetailFragment());
            }
            else if(item.getItemId() == R.id.listLogo){
                replaceFragment(new ListFragment());
