@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomNav.setOnItemSelectedListener(item -> {
            if(item.getItemId() == R.id.homeLogo){
-               replaceFragment(new DetailFragment());
+               replaceFragment(new HomeNewsFragment());
            }
            else if(item.getItemId() == R.id.listLogo){
                replaceFragment(new ListFragment());

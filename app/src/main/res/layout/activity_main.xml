@@ -7,19 +7,21 @@
     android:background="@color/darkBlue"
     tools:context=".MainActivity">
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="59dp"
         android:background="@color/darkBlue"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintBottom_toTopOf="@id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/baseline_info_24"
+        app:menu="@menu/header"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="AnimeDXD"
-        app:titleMarginStart="30dp"
-        app:menu="@menu/header" />
-
+        app:titleMarginStart="30dp" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -41,5 +43,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AnimeDXD"
+        app:layout_constraintStart_toEndOf="@id/logo"
+        app:layout_constraintTop_toTopOf="@id/toolBar"
+        app:layout_constraintBottom_toBottomOf="@id/toolBar"
+        android:layout_marginStart="40px"
+        android:textSize="60px"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="58dp"
+        android:layout_height="51dp"
+        app:layout_constraintStart_toStartOf="@id/toolBar"
+        app:layout_constraintTop_toTopOf="@id/toolBar"
+        app:layout_constraintBottom_toBottomOf="@id/toolBar"
+        app:srcCompat="@drawable/logoasli"
+        tools:layout_editor_absoluteY="4dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
