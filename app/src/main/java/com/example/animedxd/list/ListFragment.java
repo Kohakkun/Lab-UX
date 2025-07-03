@@ -3,13 +3,18 @@ package com.example.animedxd.list;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.example.animedxd.R;
 import com.example.animedxd.databinding.FragmentListBinding;
+import com.example.animedxd.detail.DetailFragment;
 
 public class ListFragment extends Fragment {
 
@@ -37,6 +42,17 @@ public class ListFragment extends Fragment {
 
         CustomBaseAdapterList customBaseAdapterList = new CustomBaseAdapterList(getActivity().getApplicationContext(), angka, animeCover, judulAnime, genreAnime, synopsisAnime);
         binding.listViewList.setAdapter(customBaseAdapterList);
+
+        binding.listViewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("Custom", "item click" + position);
+                Fragment newFragment = new DetailFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, newFragment);
+                transaction.commit();
+            }
+        });
 
 
         return binding.getRoot();
