@@ -45,7 +45,7 @@
             android:layout_alignTop="@id/welcome"
             android:layout_marginTop="45dp"
             android:layout_marginRight="-70dp"
-            android:background="@drawable/tab_control_bg"
+            android:background="@drawable/tab_control_clicked_bg"
             android:text="Manga"
             android:textColor="@color/white"
             android:textSize="20sp"/>
