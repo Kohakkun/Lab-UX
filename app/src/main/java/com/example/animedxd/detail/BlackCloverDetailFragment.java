@@ -1,7 +1,6 @@
 package com.example.animedxd.detail;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.text.LineBreaker;
 import android.os.Build;
@@ -27,7 +26,8 @@ import com.example.animedxd.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailFragment extends Fragment {
+// CHANGE 1: Renamed the class
+public class BlackCloverDetailFragment extends Fragment {
 
     // ... (Your existing view declarations)
     private ImageView animeImage;
@@ -52,7 +52,8 @@ public class DetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail, container, false);
+        // CHANGE 2: Updated the layout file reference
+        View view = inflater.inflate(R.layout.black_clover_fragment_detail, container, false);
 
         // ... (Your existing view initializations)
         animeImage = view.findViewById(R.id.animeImage);

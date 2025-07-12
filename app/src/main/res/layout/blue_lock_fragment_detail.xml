@@ -1,127 +1,127 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#1F2937"
     android:padding="16dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <!-- Title -->
         <TextView
             android:id="@+id/animeTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Black Clover"
+            android:gravity="center"
+            android:text="Blue Lock"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
         <!-- Image and details -->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/animeImage"
                 android:layout_width="150dp"
                 android:layout_height="220dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/animecover2"/>
+                android:src="@drawable/animecover4" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp">
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/animeType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Type: TV"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeEpisodes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Episodes: 170"
-                    android:textColor="#FFFFFF"/>
+                    android:text="Episodes: 24"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeDemographic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Demographic: Shounen"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animePremiered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Premiered: Fall 2017"
-                    android:textColor="#FFFFFF"/>
+                    android:text="Premiered: Fall 2022"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeStudio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Studio: Pierrot"
-                    android:textColor="#FFFFFF"/>
+                    android:text="Studio: 8bit"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeGenre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Genre: Action, Magic, Adventure, Fantasy"
-                    android:textColor="#FFFFFF"/>
+                    android:text="Genre: Sports"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeSource"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Source: Manga"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rating: PG 13"
-                    android:textColor="#FFFFFF"/>
+                    android:text="Rating: PG-13"
+                    android:textColor="#FFFFFF" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp">
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
 
                     <RatingBar
                         android:id="@+id/ratingBar"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:stepSize="0.5"
-                        android:rating="4"
                         android:isIndicator="true"
-                        android:progressTint="@android:color/holo_orange_light"/>
+                        android:numStars="5"
+                        android:progressTint="@android:color/holo_orange_light"
+                        android:rating="4.2"
+                        android:stepSize="0.1" />
 
                     <TextView
                         android:id="@+id/animeScore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8.14"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginStart="4dp"/>
+                        android:layout_marginStart="4dp"
+                        android:text="8.35"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -137,29 +137,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Synopsis"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/animeSynopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Asta and Yuno were abandoned at the same church..."
-            android:textColor="#FFFFFF"
             android:layout_marginTop="4dp"
-            android:maxLines="3"  android:ellipsize="end" /> <TextView
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="After a disastrous defeat at the 2018 World Cup..."
+            android:textColor="#FFFFFF" />
+
+        <TextView
             android:id="@+id/btnReadMoreSynopsis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Read More"
-            android:textColor="#D4A017" android:layout_gravity="end" android:layout_marginTop="4dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="4dp"
             android:paddingStart="8dp"
-            android:paddingEnd="8dp"
             android:paddingTop="4dp"
+            android:paddingEnd="8dp"
             android:paddingBottom="4dp"
-            android:visibility="gone"/>
+            android:text="Read More"
+            android:textColor="#D4A017"
+            android:visibility="gone" />
 
         <View
             android:layout_width="match_parent"
@@ -171,18 +176,19 @@
             android:id="@+id/btnWriteReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Write Your Review"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:background="@drawable/button_background"
-            app:backgroundTint="@null"  android:textColor="#FFFFFF"
-            android:layout_marginTop="10dp"/>
+            android:text="Write Your Review"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:weightSum="100" >
+            android:orientation="horizontal"
+            android:weightSum="100">
 
             <View
                 android:layout_width="0dp"
@@ -191,11 +197,11 @@
 
             <LinearLayout
                 android:id="@+id/reviewContainer"
-                android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="95"
-                android:background="@drawable/border_background" /> <!-- ADD THIS LINE -->
+                android:background="@drawable/border_background"
+                android:orientation="vertical" />
 
             <View
                 android:layout_width="0dp"
