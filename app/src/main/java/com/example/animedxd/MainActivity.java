@@ -21,9 +21,20 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        if (savedInstanceState == null) {
+            String fragmentName = getIntent().getStringExtra("fragment_to_open");
+            if ("ListFragment".equals(fragmentName)) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout, new ListFragment())
+                        .commit();
+            } else {
+                // Default behavior
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout, new HomeNewsFragment())
+                        .commit();
+            }
+        }
 
-
-        replaceFragment(new HomeNewsFragment());
         binding.bottomNav.setBackground(null);
 
         binding.bottomNav.setOnItemSelectedListener(item -> {

@@ -1,5 +1,6 @@
 package com.example.animedxd.list;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.animedxd.MainActivity2;
 import com.example.animedxd.R;
 import com.example.animedxd.databinding.FragmentListBinding;
 import com.example.animedxd.detail.AttackOnTitanDetailFragment;
@@ -53,50 +55,25 @@ public class ListFragment extends Fragment {
         binding.listViewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("Custom", "item click" + position);
-                Fragment newFragment = null; // Initialize fragment as null
 
-                // Determine which fragment to open based on the item's position
+                String fragmentTag = "";
+
                 switch (position) {
-                    case 0:
-                        newFragment = new SoloLevelingDetailFragment();
-                        break;
-                    case 1:
-                        newFragment = new BlackCloverDetailFragment();
-                        break;
-                    case 2:
-                        newFragment = new BorutoDetailFragment();
-                        break;
-                    case 3:
-                        newFragment = new BlueLockDetailFragment();
-                        break;
-                    case 4:
-                        newFragment = new AttackOnTitanDetailFragment();
-                        break;
-                    case 5:
-                        newFragment = new SpyXFamilyDetailFragment();
-                        break;
-                    case 6:
-                        newFragment = new YourLieInAprilDetailFragment();
-                        break;
-                    case 7:
-                        newFragment = new TokyoRevengersDetailFragment();
-                        break;
-                    case 8:
-                        newFragment = new ReZeroDetailFragment();
-                        break;
-                    case 9:
-                        newFragment = new NoragamiDetailFragment();
-                        break;
+                    case 0: fragmentTag = "SoloLeveling"; break;
+                    case 1: fragmentTag = "BlackClover"; break;
+                    case 2: fragmentTag = "Boruto"; break;
+                    case 3: fragmentTag = "BlueLock"; break;
+                    case 4: fragmentTag = "AttackOnTitan"; break;
+                    case 5: fragmentTag = "SpyXFamily"; break;
+                    case 6: fragmentTag = "YourLieInApril"; break;
+                    case 7: fragmentTag = "TokyoRevengers"; break;
+                    case 8: fragmentTag = "ReZero"; break;
+                    case 9: fragmentTag = "Noragami"; break;
                 }
 
-                // If a fragment was created, replace the current view with it
-                if (newFragment != null) {
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frameLayout, newFragment);
-                    transaction.addToBackStack(null); // Add transaction to the back stack
-                    transaction.commit();
-                }
+                Intent intent = new Intent(getActivity(), MainActivity2.class);
+                intent.putExtra("fragment_name", fragmentTag);
+                startActivity(intent);
             }
         });
 
