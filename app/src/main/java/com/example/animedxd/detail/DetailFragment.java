@@ -23,11 +23,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.animedxd.R;
+import com.example.animedxd.model.Anime;
+import com.example.animedxd.model.Anime.Review;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TokyoRevengersDetailFragment extends Fragment {
+/**
+ * A single, generic Fragment for displaying anime details.
+ * It receives an Anime object via arguments and populates its views dynamically.
+ */
+public class DetailFragment extends Fragment {
+
+    private static final String ARG_ANIME = "anime_object";
 
     private ImageView animeImage;
     private TextView animeTitle, animeType, animeEpisodes, animeDemographic,
@@ -37,27 +45,63 @@ public class TokyoRevengersDetailFragment extends Fragment {
     private LinearLayout reviewContainer;
     private Button btnWriteReview;
     private TextView btnReadMoreSynopsis;
+
     private String fullSynopsisText;
 
+    private Anime currentAnime;
     private List<Review> reviewsList = new ArrayList<>();
     private String currentUserUsername = "Xaoc";
     private int currentUserProfileImageResId = R.drawable.review_profile;
 
+    /**
+     * Factory method to create a new instance of DetailFragment with a specific Anime object.
+     * This is the recommended way to pass arguments to fragments.
+     *
+     * @param anime The Anime object containing the details to display.
+     * @return A new instance of DetailFragment.
+     */
+    public static DetailFragment newInstance(Anime anime) {
+        DetailFragment fragment = new DetailFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_ANIME, anime);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            currentAnime = (Anime) getArguments().getSerializable(ARG_ANIME);
+            if (currentAnime != null) {
+                reviewsList.addAll(currentAnime.getInitialReviews());
+            }
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tokyo_revengers_fragment_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_detail, container, false);
 
         initializeViews(view);
-        setAnimeDetails();
-        setupSynopsis();
-        addInitialReviews();
-        displayReviews();
+
+        if (currentAnime != null) {
+            setAnimeDetails(currentAnime);
+            setupSynopsis(currentAnime.getSynopsis());
+            displayReviews(); // Display initial reviews
+        }
+
         btnWriteReview.setOnClickListener(v -> showWriteReviewDialog());
 
         return view;
     }
 
+    /**
+     * Initializes all the TextViews, ImageView, RatingBar, and LinearLayout
+     * from the inflated view.
+     * @param view The root view of the fragment's layout.
+     */
     private void initializeViews(View view) {
         animeImage = view.findViewById(R.id.animeImage);
         animeTitle = view.findViewById(R.id.animeTitle);
@@ -77,30 +121,39 @@ public class TokyoRevengersDetailFragment extends Fragment {
         btnReadMoreSynopsis = view.findViewById(R.id.btnReadMoreSynopsis);
     }
 
-    private void setAnimeDetails() {
-        animeTitle.setText("Tokyo Revengers");
-        animeImage.setImageResource(R.drawable.animecover8);
-        animeType.setText("Type: TV");
-        animeEpisodes.setText("Episodes: 37");
-        animeDemographic.setText("Demographic: Shounen");
-        animePremiered.setText("Premiered: Spring 2021");
-        animeStudio.setText("Studio: Lidenfilms");
-        animeGenre.setText("Genre: Action, Supernatural, Sci-Fi (Time Travel)");
-        animeSource.setText("Source: Manga");
-        animeRating.setText("Rating: R - 17+");
-        animeScore.setText("8.09");
-        ratingBar.setRating(4.0f);
+    /**
+     * Sets the detailed information of the anime to the respective UI elements.
+     * @param anime The Anime object containing the data.
+     */
+    private void setAnimeDetails(Anime anime) {
+        animeTitle.setText(anime.getTitle());
+        animeImage.setImageResource(anime.getImageResId());
+        animeType.setText("Type: " + anime.getType());
+        animeEpisodes.setText("Episodes: " + anime.getEpisodes());
+        animeDemographic.setText("Demographic: " + anime.getDemographic());
+        animePremiered.setText("Premiered: " + anime.getPremiered());
+        animeStudio.setText("Studio: " + anime.getStudio());
+        animeGenre.setText("Genre: " + anime.getGenre());
+        animeSource.setText("Source: " + anime.getSource());
+        animeRating.setText("Rating: " + anime.getRating());
+        animeScore.setText(anime.getScore());
+        ratingBar.setRating(anime.getRatingBarScore());
     }
 
-    private void setupSynopsis() {
-        fullSynopsisText = "Takemichi Hanagaki's life is at an all-time low. Just when he thought it couldn't get worse, he finds out that Hinata Tachibana, his ex-girlfriend, was murdered by the Tokyo Manji Gang. The next day, a brush with death brings him back 12 years in time to his middle school days. Takemichi, now a crybaby hero, decides to infiltrate the Tokyo Manji Gang to rewrite the future and save Hinata from her tragic fate.";
+    /**
+     * Sets up the synopsis text view with "Read More/Show Less" functionality.
+     * @param synopsis The full synopsis text for the anime.
+     */
+    private void setupSynopsis(String synopsis) {
+        fullSynopsisText = synopsis;
         animeSynopsis.setText(fullSynopsisText);
 
         animeSynopsis.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
                 animeSynopsis.getViewTreeObserver().removeOnPreDrawListener(this);
-                if (animeSynopsis.getLayout() != null && (animeSynopsis.getLayout().getEllipsisCount(animeSynopsis.getLineCount() - 1) > 0 || animeSynopsis.getLineCount() > animeSynopsis.getMaxLines())) {
+                Layout layout = animeSynopsis.getLayout();
+                if (layout != null && (layout.getEllipsisCount(layout.getLineCount() - 1) > 0 || animeSynopsis.getLineCount() > animeSynopsis.getMaxLines())) {
                     btnReadMoreSynopsis.setVisibility(View.VISIBLE);
                 } else {
                     btnReadMoreSynopsis.setVisibility(View.GONE);
@@ -120,14 +173,15 @@ public class TokyoRevengersDetailFragment extends Fragment {
                 btnReadMoreSynopsis.setText("Read More");
             }
         });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            animeSynopsis.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+        }
     }
 
-    private void addInitialReviews() {
-        reviewsList.add(new Review("CrybabyHero", "Takemichi is a different kind of protagonist, and I love him for it. His determination to save everyone is inspiring.", R.drawable.review_profile));
-        reviewsList.add(new Review("Toman_Forever", "Mikey and Draken are some of the coolest characters in anime. The whole delinquent gang theme is awesome.", R.drawable.review_profile));
-        reviewsList.add(new Review("TimeLeaper", "The time travel plot is so compelling! Every episode leaves you on the edge of your seat. The stakes are always high.", R.drawable.review_profile));
-    }
-
+    /**
+     * Clears existing reviews and re-adds all reviews from the reviewsList to the UI.
+     */
     private void displayReviews() {
         reviewContainer.removeAllViews();
         for (int i = 0; i < reviewsList.size(); i++) {
@@ -135,6 +189,9 @@ public class TokyoRevengersDetailFragment extends Fragment {
         }
     }
 
+    /**
+     * Displays a dialog for the user to write and submit a new review.
+     */
     private void showWriteReviewDialog() {
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_write_review, null);
@@ -154,17 +211,27 @@ public class TokyoRevengersDetailFragment extends Fragment {
 
         btnPostReview.setOnClickListener(v -> {
             String reviewText = etReviewInput.getText().toString().trim();
+
             if (reviewText.isEmpty()) {
                 Toast.makeText(requireContext(), "Please enter a review.", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(requireContext(), "Review submitted!", Toast.LENGTH_SHORT).show();
-                reviewsList.add(0, new Review(currentUserUsername, reviewText, currentUserProfileImageResId));
-                displayReviews();
+                Toast.makeText(requireContext(), "Review submitted successfully!", Toast.LENGTH_SHORT).show();
+
+                Review newReview = new Review(currentUserUsername, reviewText, currentUserProfileImageResId);
+                reviewsList.add(0, newReview);
+
+
                 dialog.dismiss();
             }
         });
     }
 
+    /**
+     * Adds a single review card to the reviewContainer LinearLayout.
+     * @param review The Review object to display.
+     * @param isLastItem A boolean indicating if this is the last review in the list,
+     * used to conditionally add a divider.
+     */
     private void addReviewCard(Review review, boolean isLastItem) {
         LayoutInflater inflater = LayoutInflater.from(requireContext());
         View reviewCard = inflater.inflate(R.layout.fragment_item_review, reviewContainer, false);
@@ -177,7 +244,11 @@ public class TokyoRevengersDetailFragment extends Fragment {
             tvReviewContent.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
 
-        imgUserProfile.setImageResource(review.getUserProfileImageResId());
+        if (review.getUserProfileImageResId() != 0) {
+            imgUserProfile.setImageResource(review.getUserProfileImageResId());
+        } else {
+            imgUserProfile.setImageResource(R.drawable.review_profile);
+        }
         tvUsername.setText(review.getUsername());
         tvReviewContent.setText(review.getReviewContent());
 
@@ -185,27 +256,14 @@ public class TokyoRevengersDetailFragment extends Fragment {
 
         if (!isLastItem) {
             View divider = new View(requireContext());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
-            params.setMargins(0, 24, 0, 24);
-            divider.setLayoutParams(params);
+            LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    (int) getResources().getDisplayMetrics().density * 1
+            );
+            dividerParams.setMargins(0, (int) getResources().getDisplayMetrics().density * 8, 0, (int) getResources().getDisplayMetrics().density * 8);
+            divider.setLayoutParams(dividerParams);
             divider.setBackgroundColor(Color.parseColor("#444444"));
             reviewContainer.addView(divider);
         }
-    }
-
-    private static class Review {
-        String username;
-        String reviewContent;
-        int userProfileImageResId;
-
-        Review(String username, String reviewContent, int userProfileImageResId) {
-            this.username = username;
-            this.reviewContent = reviewContent;
-            this.userProfileImageResId = userProfileImageResId;
-        }
-
-        public String getUsername() { return username; }
-        public String getReviewContent() { return reviewContent; }
-        public int getUserProfileImageResId() { return userProfileImageResId; }
     }
 }

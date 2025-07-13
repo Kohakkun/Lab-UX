@@ -1,3 +1,4 @@
+<!-- File: app/src/main/res/layout/fragment_detail.xml -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -10,31 +11,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Title -->
+        <!-- Anime Title -->
         <TextView
             android:id="@+id/animeTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Blue Lock"
+            android:text="Anime Title"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <!-- Image and details -->
+        <!-- Image and Details Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
+            <!-- Anime Cover Image -->
             <ImageView
                 android:id="@+id/animeImage"
                 android:layout_width="150dp"
                 android:layout_height="220dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/animecover4" />
+                android:src="@drawable/animecover1" /> <!-- Placeholder image, will be set dynamically -->
 
+            <!-- Anime Metadata (Type, Episodes, Studio, Genre, etc.) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -46,58 +49,59 @@
                     android:id="@+id/animeType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Type: TV"
+                    android:text="Type: "
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeEpisodes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Episodes: 24"
+                    android:text="Episodes: "
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeDemographic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Demographic: Shounen"
+                    android:text="Demographic: "
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animePremiered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Premiered: Fall 2022"
+                    android:text="Premiered: "
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeStudio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Studio: 8bit"
+                    android:text="Studio: "
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeGenre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Genre: Sports"
+                    android:text="Genre: "
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeSource"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Source: Manga"
+                    android:text="Source: "
                     android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/animeRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rating: PG-13"
+                    android:text="Rating: "
                     android:textColor="#FFFFFF" />
 
+                <!-- Rating Bar and Score -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,7 +116,7 @@
                         android:isIndicator="true"
                         android:numStars="5"
                         android:progressTint="@android:color/holo_orange_light"
-                        android:rating="4.2"
+                        android:rating="0.0"
                         android:stepSize="0.1" />
 
                     <TextView
@@ -120,20 +124,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:text="8.35"
+                        android:text="0.00"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
 
+        <!-- Divider below details -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
             android:background="#444" />
 
-        <!-- Synopsis -->
+        <!-- Synopsis Section -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -149,15 +154,16 @@
             android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="After a disastrous defeat at the 2018 World Cup..."
+            android:text="Synopsis text will go here."
             android:textColor="#FFFFFF"
-            android:justificationMode="inter_word"/>
+            android:justificationMode="inter_word" />
 
+        <!-- "Read More" button for synopsis - NOW CENTERED -->
         <TextView
             android:id="@+id/btnReadMoreSynopsis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
             android:paddingStart="8dp"
             android:paddingTop="4dp"
@@ -167,12 +173,14 @@
             android:textColor="#D4A017"
             android:visibility="gone" />
 
+        <!-- Divider below synopsis -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
             android:background="#444" />
 
+        <!-- "Write Your Review" Button -->
         <Button
             android:id="@+id/btnWriteReview"
             android:layout_width="wrap_content"
@@ -184,6 +192,7 @@
             android:textColor="#FFFFFF"
             app:backgroundTint="@null" />
 
+        <!-- Review Container (where individual review cards will be added) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -7,44 +7,32 @@
     android:background="@color/darkBlue"
     tools:context=".MainActivity2">
 
-
+    <!-- Toolbar at the top -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
-        android:layout_width="411dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/darkBlue"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintBottom_toTopOf="@id/frameLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/header"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleMarginStart="30dp" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolBar">
+    <!-- Back Button (ImageView) - positioned relative to the Toolbar -->
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@id/toolBar"
+        app:layout_constraintTop_toTopOf="@id/toolBar"
+        app:layout_constraintBottom_toBottomOf="@id/toolBar"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
 
-    </FrameLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:background="@color/darkBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav" />
-
+    <!-- App Title (TextView) - positioned relative to the back button and Toolbar -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -53,21 +41,43 @@
         app:layout_constraintStart_toEndOf="@id/back"
         app:layout_constraintTop_toTopOf="@id/toolBar"
         app:layout_constraintBottom_toBottomOf="@id/toolBar"
-        android:layout_marginStart="40px"
-        android:textSize="60px"
-        android:textColor="@color/white"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="@id/toolBar"
-        app:layout_constraintTop_toTopOf="@id/toolBar"
-        app:layout_constraintBottom_toBottomOf="@id/toolBar"
-        app:srcCompat="@drawable/baseline_arrow_back_24"
-        tools:layout_editor_absoluteY="4dp" />
+        android:textSize="20sp"
+        android:textColor="@color/white" />
+
+    <!-- Main Content Fragment Container (for HomeNewsFragment, ListFragment) -->
+    <!-- This FrameLayout was missing and caused the "frameLayout" symbol error. -->
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        android:visibility="visible"/> <!-- Default visibility, controlled by Java -->
+
+    <!-- Detail Fragment Container (for DetailFragment) -->
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        android:visibility="gone"> <!-- Default visibility, controlled by Java -->
+    </FrameLayout>
+
+    <!-- Bottom Navigation View -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:background="@color/darkBlue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
