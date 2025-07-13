@@ -147,7 +147,8 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:text="Takemichi Hanagaki's life is at an all-time low..."
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:justificationMode="inter_word" />
 
         <TextView
             android:id="@+id/btnReadMoreSynopsis"

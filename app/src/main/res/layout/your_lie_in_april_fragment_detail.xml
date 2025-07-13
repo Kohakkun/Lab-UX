@@ -150,7 +150,8 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:text="Music accompanies the path of the human metronome..."
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:justificationMode="inter_word" />
 
         <TextView
             android:id="@+id/btnReadMoreSynopsis"

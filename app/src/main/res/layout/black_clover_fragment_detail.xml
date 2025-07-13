@@ -150,7 +150,8 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:text="Asta and Yuno were abandoned..."
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:justificationMode="inter_word" />
 
         <TextView
             android:id="@+id/btnReadMoreSynopsis"
