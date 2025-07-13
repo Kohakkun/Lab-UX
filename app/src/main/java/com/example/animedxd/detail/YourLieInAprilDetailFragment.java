@@ -85,7 +85,7 @@ public class YourLieInAprilDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Fall 2014");
         animeStudio.setText("Studio: A-1 Pictures");
-        animeGenre.setText("Genre: Drama, Music, Romance");
+        animeGenre.setText("Genre: Drama, Romance, Music");
         animeSource.setText("Source: Manga");
         animeRating.setText("Rating: PG-13");
         animeScore.setText("8.81");

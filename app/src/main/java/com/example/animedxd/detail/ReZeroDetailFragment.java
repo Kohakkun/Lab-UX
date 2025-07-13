@@ -85,7 +85,7 @@ public class ReZeroDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Seinen");
         animePremiered.setText("Premiered: Spring 2016");
         animeStudio.setText("Studio: White Fox");
-        animeGenre.setText("Genre: Drama, Fantasy, Suspense, Isekai");
+        animeGenre.setText("Genre: Isekai, Dark Fantasy, Drama");
         animeSource.setText("Source: Light novel");
         animeRating.setText("Rating: R - 17+");
         animeScore.setText("8.33");

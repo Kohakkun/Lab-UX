@@ -85,7 +85,7 @@ public class NoragamiDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Winter 2014");
         animeStudio.setText("Studio: Bones");
-        animeGenre.setText("Genre: Action, Comedy, Supernatural");
+        animeGenre.setText("Genre: Action, Supernatural, Urban Fantasy");
         animeSource.setText("Source: Manga");
         animeRating.setText("Rating: PG-13");
         animeScore.setText("8.19");

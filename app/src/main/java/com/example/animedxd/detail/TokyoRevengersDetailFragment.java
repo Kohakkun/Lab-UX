@@ -85,7 +85,7 @@ public class TokyoRevengersDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Spring 2021");
         animeStudio.setText("Studio: Lidenfilms");
-        animeGenre.setText("Genre: Action, Drama, Supernatural");
+        animeGenre.setText("Genre: Action, Supernatural, Sci-Fi (Time Travel)");
         animeSource.setText("Source: Manga");
         animeRating.setText("Rating: R - 17+");
         animeScore.setText("8.09");

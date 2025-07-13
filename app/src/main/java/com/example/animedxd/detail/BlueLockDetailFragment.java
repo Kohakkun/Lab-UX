@@ -85,7 +85,7 @@ public class BlueLockDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Fall 2022");
         animeStudio.setText("Studio: 8bit");
-        animeGenre.setText("Genre: Sports");
+        animeGenre.setText("Genre: Sports, Psychological, Drama");
         animeSource.setText("Source: Manga");
         animeRating.setText("Rating: PG-13");
         animeScore.setText("8.35");

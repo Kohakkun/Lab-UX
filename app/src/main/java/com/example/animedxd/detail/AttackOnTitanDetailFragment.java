@@ -85,7 +85,7 @@ public class AttackOnTitanDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Spring 2013");
         animeStudio.setText("Studio: Wit Studio, MAPPA");
-        animeGenre.setText("Genre: Action, Drama, Suspense");
+        animeGenre.setText("Genre: Action, Dark Fantasy, Military");
         animeSource.setText("Source: Manga");
         animeRating.setText("Rating: R - 17+");
         animeScore.setText("9.05");

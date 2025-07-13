@@ -85,7 +85,7 @@ public class BorutoDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Spring 2017");
         animeStudio.setText("Studio: Pierrot");
-        animeGenre.setText("Genre: Action, Adventure, Fantasy");
+        animeGenre.setText("Genre: Action, Martial Arts, Shounen");
         animeSource.setText("Source: Manga");
         animeRating.setText("Rating: PG-13");
         animeScore.setText("5.79");

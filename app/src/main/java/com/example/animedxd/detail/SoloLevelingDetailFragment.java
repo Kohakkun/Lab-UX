@@ -96,7 +96,7 @@ public class SoloLevelingDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Winter 2024");
         animeStudio.setText("Studio: A-1 Pictures");
-        animeGenre.setText("Genre: Action, Fantasy");
+        animeGenre.setText("Genre: Action, Regressor, Fantasy");
         animeSource.setText("Source: Web novel");
         animeRating.setText("Rating: R - 17+ (violence & profanity)");
         animeScore.setText("8.75");

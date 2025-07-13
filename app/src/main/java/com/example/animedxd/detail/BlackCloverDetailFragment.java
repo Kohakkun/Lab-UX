@@ -82,7 +82,7 @@ public class BlackCloverDetailFragment extends Fragment {
         animeDemographic.setText("Demographic: Shounen");
         animePremiered.setText("Premiered: Fall 2017");
         animeStudio.setText("Studio: Pierrot");
-        animeGenre.setText("Genre: Action, Magic, Adventure, Fantasy");
+        animeGenre.setText("Genre: Action, Magic, Adventure");
         animeSource.setText("Source: Manga");
         animeRating.setText("Rating: PG 13");
         animeScore.setText("8.14");
