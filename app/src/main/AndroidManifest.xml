@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimeDXD"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
+
         <activity
             android:name=".list.CustomListList"
             android:exported="false" />
@@ -22,15 +24,21 @@
             android:name=".home.CustomListHome"
             android:exported="false"
             android:theme="@style/Theme.AnimeDXD" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

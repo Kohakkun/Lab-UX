@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/homeLogo"> <!-- Halaman awal saat aplikasi dibuka -->
 
+    <!-- Halaman Home -->
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.animedxd.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/homeLogo"
+        android:name="com.example.animedxd.home.HomeNewsFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home_news" />
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
+    <!-- Halaman List -->
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.animedxd.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/listLogo"
+        android:name="com.example.animedxd.list.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" />
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+    <!-- Halaman About -->
+    <fragment
+        android:id="@+id/aboutLogo"
+        android:name="com.example.animedxd.about.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+
 </navigation>
