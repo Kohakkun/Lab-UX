@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:text="Welcome, User"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_margin="20dp"
             android:layout_alignParentLeft="true"

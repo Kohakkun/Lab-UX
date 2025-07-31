@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
            }
            else if(item.getItemId() == R.id.aboutLogo){
                replaceFragment(new AboutFragment());
-               return true;
            }
             return true;
         });

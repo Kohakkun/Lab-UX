@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/header"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleMarginStart="30dp" />
+        app:titleMarginStart="1000dp" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -42,6 +42,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:itemActiveIndicatorStyle="@style/CustomActiveIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav" />
 
@@ -53,7 +56,6 @@
         app:layout_constraintStart_toEndOf="@id/logo"
         app:layout_constraintTop_toTopOf="@id/toolBar"
         app:layout_constraintBottom_toBottomOf="@id/toolBar"
-        android:layout_marginStart="40px"
         android:textSize="60px"
         android:textColor="@color/white"
         tools:layout_editor_absoluteX="78dp"
@@ -66,7 +68,7 @@
         app:layout_constraintStart_toStartOf="@id/toolBar"
         app:layout_constraintTop_toTopOf="@id/toolBar"
         app:layout_constraintBottom_toBottomOf="@id/toolBar"
-        app:srcCompat="@drawable/logoasli"
+        app:srcCompat="@drawable/logo2"
         tools:layout_editor_absoluteY="4dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
