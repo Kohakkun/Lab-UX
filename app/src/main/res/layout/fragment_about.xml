@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/title_about"
         app:layout_constraintTop_toBottomOf="@id/title_about"
         tools:text="Welcome, User" />

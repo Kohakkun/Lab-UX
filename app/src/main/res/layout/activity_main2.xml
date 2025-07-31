@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/header"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleMarginStart="30dp" />
+        app:titleMarginStart="1000dp" />
 
     <!-- Back Button (ImageView) - positioned relative to the Toolbar -->
     <ImageView
@@ -79,6 +79,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:itemActiveIndicatorStyle="@style/CustomActiveIndicator"
         app:menu="@menu/bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

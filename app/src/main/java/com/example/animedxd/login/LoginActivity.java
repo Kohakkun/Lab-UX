@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.animedxd.MainActivity;
 import com.example.animedxd.MainActivity2;
 import com.example.animedxd.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.apply(); // Gunakan apply() untuk menyimpan secara asynchronous
 
 // 2. Pindah ke halaman utama
-        Intent intentToHome = new Intent(LoginActivity.this, MainActivity2.class);
+        Intent intentToHome = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intentToHome);
         finish(); // Tetap panggil finish()
     }

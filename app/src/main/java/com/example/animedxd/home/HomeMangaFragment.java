@@ -1,7 +1,12 @@
 package com.example.animedxd.home;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -43,6 +48,17 @@ public class HomeMangaFragment extends Fragment {
             }
         });
 
+        if (getActivity() != null) {
+            // Ambil username dari SharedPreferences
+            SharedPreferences prefs = getActivity().getSharedPreferences("AnimeDXDPrefs", MODE_PRIVATE);
+            String username = prefs.getString("LOGGED_IN_USERNAME", "Guest");
+
+            // Set pesan sambutan
+            binding.welcome.setText("Welcome, " + username);
+        }
+
         return binding.getRoot();
     }
+
+
 }
