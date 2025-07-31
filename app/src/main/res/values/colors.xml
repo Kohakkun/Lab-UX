@@ -6,4 +6,7 @@
     <color name="lightBlue">#374151</color>
     <color name="blue">#027DB4</color>
     <color name="abu">#D3D3D3</color>
+    <!-- New color for transparent dark blue background -->
+    <color name="transparent_dark_blue">#991F2937</color> <!-- 60% opacity for #1F2937 -->
+    <color name="gradient_end_color">#1F2937</color> <!-- Matches darkBlue for seamless blend -->
 </resources>

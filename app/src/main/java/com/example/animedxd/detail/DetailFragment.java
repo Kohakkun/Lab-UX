@@ -45,13 +45,14 @@ public class DetailFragment extends Fragment {
     private LinearLayout reviewContainer;
     private Button btnWriteReview;
     private TextView btnReadMoreSynopsis;
+    private ImageView gradientOverlay; // Added for the gradient effect
 
     private String fullSynopsisText;
 
     private Anime currentAnime;
     private List<Review> reviewsList = new ArrayList<>();
-    private String currentUserUsername = "Xaoc";
-    private int currentUserProfileImageResId = R.drawable.review_profile;
+    private String currentUserUsername = "Xaoc"; // Default username, consider fetching from SharedPreferences
+    private int currentUserProfileImageResId = R.drawable.review_profile; // Default profile image
 
     /**
      * Factory method to create a new instance of DetailFragment with a specific Anime object.
@@ -74,6 +75,7 @@ public class DetailFragment extends Fragment {
         if (getArguments() != null) {
             currentAnime = (Anime) getArguments().getSerializable(ARG_ANIME);
             if (currentAnime != null) {
+                // Initialize reviewsList with initial reviews from the Anime object
                 reviewsList.addAll(currentAnime.getInitialReviews());
             }
         }
@@ -119,6 +121,7 @@ public class DetailFragment extends Fragment {
         reviewContainer = view.findViewById(R.id.reviewContainer);
         btnWriteReview = view.findViewById(R.id.btnWriteReview);
         btnReadMoreSynopsis = view.findViewById(R.id.btnReadMoreSynopsis);
+        gradientOverlay = view.findViewById(R.id.gradientOverlay); // Initialize the new ImageView
     }
 
     /**
@@ -148,15 +151,21 @@ public class DetailFragment extends Fragment {
         fullSynopsisText = synopsis;
         animeSynopsis.setText(fullSynopsisText);
 
+        // This listener ensures that the "Read More" button and gradient only appear
+        // if the text actually overflows.
         animeSynopsis.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
+                // Remove the listener to prevent multiple calls
                 animeSynopsis.getViewTreeObserver().removeOnPreDrawListener(this);
+
                 Layout layout = animeSynopsis.getLayout();
                 if (layout != null && (layout.getEllipsisCount(layout.getLineCount() - 1) > 0 || animeSynopsis.getLineCount() > animeSynopsis.getMaxLines())) {
                     btnReadMoreSynopsis.setVisibility(View.VISIBLE);
+                    gradientOverlay.setVisibility(View.VISIBLE); // Show gradient if text is truncated
                 } else {
                     btnReadMoreSynopsis.setVisibility(View.GONE);
+                    gradientOverlay.setVisibility(View.GONE); // Hide gradient if text fits
                 }
                 return true;
             }
@@ -164,16 +173,19 @@ public class DetailFragment extends Fragment {
 
         btnReadMoreSynopsis.setOnClickListener(v -> {
             if (btnReadMoreSynopsis.getText().equals("Read More")) {
-                animeSynopsis.setMaxLines(Integer.MAX_VALUE);
-                animeSynopsis.setEllipsize(null);
+                animeSynopsis.setMaxLines(Integer.MAX_VALUE); // Show full text
+                animeSynopsis.setEllipsize(null); // Remove ellipsis
                 btnReadMoreSynopsis.setText("Show Less");
+                gradientOverlay.setVisibility(View.GONE); // Hide gradient when full text is shown
             } else {
-                animeSynopsis.setMaxLines(3);
-                animeSynopsis.setEllipsize(android.text.TextUtils.TruncateAt.END);
+                animeSynopsis.setMaxLines(3); // Collapse to 3 lines
+                animeSynopsis.setEllipsize(android.text.TextUtils.TruncateAt.END); // Add ellipsis
                 btnReadMoreSynopsis.setText("Read More");
+                gradientOverlay.setVisibility(View.VISIBLE); // Show gradient when text is truncated
             }
         });
 
+        // Enable text justification for Android Q and above for better text flow
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             animeSynopsis.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
@@ -185,6 +197,7 @@ public class DetailFragment extends Fragment {
     private void displayReviews() {
         reviewContainer.removeAllViews();
         for (int i = 0; i < reviewsList.size(); i++) {
+            // Pass true for the last item to avoid adding a divider after it
             addReviewCard(reviewsList.get(i), i == reviewsList.size() - 1);
         }
     }
@@ -200,7 +213,10 @@ public class DetailFragment extends Fragment {
         TextView dialogUsername = dialogView.findViewById(R.id.dialogUsername);
         EditText etReviewInput = dialogView.findViewById(R.id.etReviewInput);
         Button btnPostReview = dialogView.findViewById(R.id.btnPostReview);
+        LinearLayout reviewContentLayout = dialogView.findViewById(R.id.review_content_layout);
+        TextView dialogErrorMessage = dialogView.findViewById(R.id.dialog_error_message);
 
+        // Set current user's profile image and username in the dialog
         dialogUserProfileImage.setImageResource(currentUserProfileImageResId);
         dialogUsername.setText(currentUserUsername);
 
@@ -213,15 +229,35 @@ public class DetailFragment extends Fragment {
             String reviewText = etReviewInput.getText().toString().trim();
 
             if (reviewText.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter a review.", Toast.LENGTH_SHORT).show();
+                // Hide all main components
+                reviewContentLayout.setVisibility(View.GONE);
+                // Set text and color for error message
+                dialogErrorMessage.setText("Please enter a review.");
+                dialogErrorMessage.setTextColor(Color.parseColor("#FFFFFF"));
+                // Show the error message
+                dialogErrorMessage.setVisibility(View.VISIBLE);
+                // After 2000ms, hide the error message and show back the main components
+                dialogView.postDelayed(() -> {
+                    dialogErrorMessage.setVisibility(View.GONE);
+                    reviewContentLayout.setVisibility(View.VISIBLE);
+                }, 2000);
             } else {
-                Toast.makeText(requireContext(), "Review submitted successfully!", Toast.LENGTH_SHORT).show();
+                // Hide main components and display a success message
+                reviewContentLayout.setVisibility(View.GONE);
+                dialogErrorMessage.setText("Review submitted successfully.");
+                dialogErrorMessage.setTextColor(Color.parseColor("#FFFFFF")); // Green color for success
+                dialogErrorMessage.setVisibility(View.VISIBLE);
 
+                // Create a new review object with current user's data
                 Review newReview = new Review(currentUserUsername, reviewText, currentUserProfileImageResId);
-                reviewsList.add(0, newReview);
+                reviewsList.add(0, newReview); // Add new review to the top of the list
 
-
-                dialog.dismiss();
+                // Delay the dismissal of the dialog
+                dialogView.postDelayed(() -> {
+                    dialog.dismiss(); // Close the dialog after a short delay
+                    // Re-display all reviews to reflect the new addition
+                    displayReviews();
+                }, 2000);
             }
         });
     }
@@ -240,13 +276,16 @@ public class DetailFragment extends Fragment {
         TextView tvUsername = reviewCard.findViewById(R.id.tvUsername);
         TextView tvReviewContent = reviewCard.findViewById(R.id.tvReviewContent);
 
+        // Apply text justification for Android Q and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             tvReviewContent.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
 
+        // Set review details
         if (review.getUserProfileImageResId() != 0) {
             imgUserProfile.setImageResource(review.getUserProfileImageResId());
         } else {
+            // Fallback to a default profile image if none is specified
             imgUserProfile.setImageResource(R.drawable.review_profile);
         }
         tvUsername.setText(review.getUsername());
@@ -254,15 +293,17 @@ public class DetailFragment extends Fragment {
 
         reviewContainer.addView(reviewCard);
 
+        // Add a divider after each review, except for the very last one
         if (!isLastItem) {
             View divider = new View(requireContext());
             LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    (int) getResources().getDisplayMetrics().density * 1
+                    (int) getResources().getDisplayMetrics().density * 1 // 1dp height
             );
+            // Add margin for spacing between review cards
             dividerParams.setMargins(0, (int) getResources().getDisplayMetrics().density * 8, 0, (int) getResources().getDisplayMetrics().density * 8);
             divider.setLayoutParams(dividerParams);
-            divider.setBackgroundColor(Color.parseColor("#444444"));
+            divider.setBackgroundColor(Color.parseColor("#444444")); // Dark grey divider color
             reviewContainer.addView(divider);
         }
     }

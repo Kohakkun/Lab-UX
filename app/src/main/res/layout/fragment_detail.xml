@@ -1,4 +1,4 @@
-<!-- File: app/src/main/res/layout/fragment_detail.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -23,90 +23,110 @@
             android:textStyle="bold" />
 
         <!-- Image and Details Section -->
+        <!-- Adjusted layout_weight and margins for better proportion -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:orientation="horizontal">
 
             <!-- Anime Cover Image -->
             <ImageView
                 android:id="@+id/animeImage"
-                android:layout_width="150dp"
-                android:layout_height="220dp"
+                android:layout_width="181dp"
+                android:layout_height="254dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/animecover1" /> <!-- Placeholder image, will be set dynamically -->
 
             <!-- Anime Metadata (Type, Episodes, Studio, Genre, etc.) -->
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animeType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Type: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animeEpisodes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Episodes: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animeDemographic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Demographic: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animePremiered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Premiered: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animeStudio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Studio: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animeGenre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Genre: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animeSource"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Source: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:layout_marginBottom="4sp"
                     android:id="@+id/animeRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rating: "
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <!-- Rating Bar and Score -->
                 <LinearLayout
+                    android:layout_marginBottom="4sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <RatingBar
                         android:id="@+id/ratingBar"
@@ -117,7 +137,7 @@
                         android:numStars="5"
                         android:progressTint="@android:color/holo_orange_light"
                         android:rating="0.0"
-                        android:stepSize="0.1" />
+                        android:stepSize="0.2" />
 
                     <TextView
                         android:id="@+id/animeScore"
@@ -125,7 +145,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:text="0.00"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -136,9 +157,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
-            android:background="#444" />
+            android:background="#797979" /> <!-- Updated divider color -->
 
-        <!-- Synopsis Section -->
+        <!-- Synopsis Section Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,38 +168,58 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/animeSynopsis"
+        <!-- Use RelativeLayout to stack synopsis and gradient overlay -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:text="Synopsis text will go here."
-            android:textColor="#FFFFFF"
-            android:justificationMode="inter_word" />
+            android:layout_marginTop="4dp">
 
-        <!-- "Read More" button for synopsis - NOW CENTERED -->
-        <TextView
-            android:id="@+id/btnReadMoreSynopsis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="4dp"
-            android:paddingStart="8dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="4dp"
-            android:text="Read More"
-            android:textColor="#D4A017"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/animeSynopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:justificationMode="inter_word"
+                android:maxLines="3"
+                android:text="Synopsis text will go here."
+                android:textColor="#FFFFFF" />
+
+            <!-- Gradient overlay for "Read More" effect -->
+            <ImageView
+                android:id="@+id/gradientOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@id/animeSynopsis"
+                android:src="@drawable/gradient"
+                android:visibility="gone" />
+
+            <!-- "Read More" button for synopsis - positioned on top of gradient -->
+            <TextView
+                android:id="@+id/btnReadMoreSynopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/animeSynopsis"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="0dp"
+                android:paddingStart="0dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="Read More"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="@null"
+                app:backgroundTint="@null"
+                android:visibility="gone" />
+
+        </RelativeLayout>
 
         <!-- Divider below synopsis -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
-            android:background="#444" />
+            android:background="#797979" /> <!-- Updated divider color -->
 
         <!-- "Write Your Review" Button -->
         <Button
@@ -189,8 +230,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/review_button_selector"
             android:text="Write Your Review"
-            app:backgroundTint="@null"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@null" />
 
         <!-- Review Container (where individual review cards will be added) -->
         <LinearLayout
@@ -198,7 +239,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:weightSum="100">
+            android:weightSum="100"
+            android:radius="4dp">
 
             <View
                 android:layout_width="0dp"
