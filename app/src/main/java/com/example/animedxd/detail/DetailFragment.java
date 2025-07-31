@@ -88,7 +88,7 @@ public class DetailFragment extends Fragment {
 
         if (currentAnime != null) {
             setAnimeDetails(currentAnime);
-            setupSynopsis(currentAnime.getSynopsis());
+            setupSynopsis(currentAnime.getFullSynopsis());
             displayReviews(); // Display initial reviews
         }
 
@@ -127,7 +127,7 @@ public class DetailFragment extends Fragment {
      */
     private void setAnimeDetails(Anime anime) {
         animeTitle.setText(anime.getTitle());
-        animeImage.setImageResource(anime.getImageResId());
+        animeImage.setImageResource(anime.getCoverResId());
         animeType.setText("Type: " + anime.getType());
         animeEpisodes.setText("Episodes: " + anime.getEpisodes());
         animeDemographic.setText("Demographic: " + anime.getDemographic());

@@ -187,10 +187,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_background"
+            android:background="@drawable/review_button_selector"
             android:text="Write Your Review"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:textColor="#FFFFFF" />
 
         <!-- Review Container (where individual review cards will be added) -->
         <LinearLayout
