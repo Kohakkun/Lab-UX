@@ -32,7 +32,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/bubblegum" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,7 +63,8 @@
                         android:text="Your Username"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:fontFamily="@font/bubblegum" />
                 </LinearLayout>
 
                 <!-- Right Column: Review Input (EditText) and Post Button -->
@@ -86,7 +88,8 @@
                         android:gravity="top"
                         android:inputType="textMultiLine"
                         android:scrollbars="vertical"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/bubblegum" />
 
                     <Button
                         android:id="@+id/btnPostReview"
@@ -96,7 +99,8 @@
                         android:text="Post"
                         android:background="@drawable/review_button_selector"
                         app:backgroundTint="@null"
-                        android:textColor="#FFFFFF"/>
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/bubblegum" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -110,6 +114,7 @@
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:fontFamily="@font/bubblegum" />
     </FrameLayout>
 </LinearLayout>

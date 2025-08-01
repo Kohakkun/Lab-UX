@@ -45,6 +45,9 @@ public class MainActivity2 extends AppCompatActivity {
             return insets;
         });
 
+        // Hide the bottom navigation bar permanently
+        binding.bottomNav.setVisibility(View.GONE);
+
         binding.back.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity2.this, MainActivity.class);
             intent.putExtra("fragment_to_open", "ListFragment");
@@ -53,9 +56,9 @@ public class MainActivity2 extends AppCompatActivity {
             finish();
         });
 
+        // The following listener is no longer needed since the bottom nav bar is hidden
+        /*
         binding.bottomNav.setBackground(null);
-
-        // CUKUP SATU BLOK LISTENER INI SAJA
         binding.bottomNav.setOnItemSelectedListener(item -> {
             if(item.getItemId() == R.id.homeLogo){
                 replaceMainContentFragment(new HomeNewsFragment());
@@ -71,8 +74,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
             return false;
         });
-
-        setSupportActionBar(binding.toolBar);
+        */
 
         Anime anime = (Anime) getIntent().getSerializableExtra("anime_data");
 
@@ -82,7 +84,6 @@ public class MainActivity2 extends AppCompatActivity {
                     .replace(R.id.frameLayout2, detailFragment)
                     .commit();
 
-            binding.bottomNav.setVisibility(View.GONE);
             if (binding.frameLayout != null) {
                 binding.frameLayout.setVisibility(View.GONE);
             }
@@ -98,7 +99,6 @@ public class MainActivity2 extends AppCompatActivity {
             if (binding.frameLayout2 != null) {
                 binding.frameLayout2.setVisibility(View.GONE);
             }
-            binding.bottomNav.setVisibility(View.VISIBLE);
         }
     }
 
@@ -117,21 +117,14 @@ public class MainActivity2 extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Letakkan method ini di dalam kelas Activity Anda (misal, di bawah onCreate)
     private void logout() {
-        // 1. Hapus data dari SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("AnimeDXDPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear(); // Menghapus semua data sesi
+        editor.clear();
         editor.apply();
 
-        // 2. Buat Intent untuk kembali ke LoginActivity
         Intent intent = new Intent(this, LoginActivity.class);
-
-        // 3. Set flags untuk membersihkan semua activity sebelumnya
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-        // 4. Jalankan Intent dan tutup Activity saat ini
         startActivity(intent);
         finish();
     }

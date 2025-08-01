@@ -1,4 +1,4 @@
-<!-- File: app/src/main/res/layout/fragment_item_review.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -28,7 +28,8 @@
             android:text="Username"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:fontFamily="@font/bubblegum" />
     </LinearLayout>
 
     <TextView
@@ -38,6 +39,7 @@
         android:layout_marginTop="8dp"
         android:text="This is a sample review content that will be displayed here."
         android:textColor="#CCCCCC"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:fontFamily="@font/bubblegum" />
 
 </LinearLayout>
