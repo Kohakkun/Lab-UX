@@ -1,12 +1,15 @@
 package com.example.animedxd.list;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.content.res.ResourcesCompat;
 
 import com.example.animedxd.R;
 import com.example.animedxd.home.CustomBaseAdapter;
@@ -20,6 +23,10 @@ public class CustomBaseAdapterList extends BaseAdapter {
     String genreAnime[];
     String synopsisAnime[];
     LayoutInflater inflater;
+    private final Typeface customFont1;
+    private final Typeface customFont2;
+    private final Typeface customFont3;
+
 
     public CustomBaseAdapterList(Context ctx, String[] angka, int[] animeCover, String[] judulAnime, String[] genreAnime, String[] synopsisAnime){
         this.ctx = ctx;
@@ -29,7 +36,9 @@ public class CustomBaseAdapterList extends BaseAdapter {
         this.genreAnime = genreAnime;
         this.synopsisAnime = synopsisAnime;
         inflater = LayoutInflater.from(ctx);
-
+        this.customFont1 = ResourcesCompat.getFont(ctx, R.font.montserrat_bold);
+        this.customFont2 = ResourcesCompat.getFont(ctx, R.font.montserrat_semibold);
+        this.customFont3 = ResourcesCompat.getFont(ctx, R.font.montserrat_regular);
     }
 
     @Override
@@ -60,8 +69,13 @@ public class CustomBaseAdapterList extends BaseAdapter {
         angka2.setText(angka[position]);
         animeCover2.setImageResource(animeCover[position]);
         judulList2.setText(judulAnime[position]);
+        judulList2.setTypeface(customFont1);
         genreList2.setText(genreAnime[position]);
+        genreList2.setTypeface(customFont2);
         synopsisList2.setText(synopsisAnime[position]);
+        synopsisList2.setTypeface(customFont3);
+
+
 
         return convertView;
     }

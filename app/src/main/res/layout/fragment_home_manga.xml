@@ -19,6 +19,7 @@
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_margin="20dp"
+            android:fontFamily="@font/bubblegum"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"/>
 
@@ -31,6 +32,7 @@
             android:layout_alignTop="@id/welcome"
             android:layout_marginTop="45dp"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/bubblegum"
             android:text="News"
             android:textColor="@color/white"
             android:textSize="20sp"/>
@@ -46,6 +48,7 @@
             android:layout_marginRight="-70dp"
             android:background="@drawable/tab_control_clicked_bg"
             android:text="Manga"
+            android:fontFamily="@font/bubblegum"
             android:textColor="@color/white"
             android:textSize="20sp"/>
 
@@ -61,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listView"
+            android:layout_marginHorizontal="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
