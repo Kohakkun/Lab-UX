@@ -29,7 +29,7 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:fontFamily="@font/bubblegum" />
+            android:fontFamily="@font/montserrat_semibold" />
     </LinearLayout>
 
     <TextView
@@ -40,6 +40,6 @@
         android:text="This is a sample review content that will be displayed here."
         android:textColor="#CCCCCC"
         android:textSize="14sp"
-        android:fontFamily="@font/bubblegum" />
+        android:fontFamily="@font/montserrat_regular" />
 
 </LinearLayout>

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="About"
+        android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -27,6 +28,7 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
         android:textSize="20sp"
+        android:fontFamily="@font/montserrat_semibold"
         app:layout_constraintStart_toStartOf="@id/title_about"
         app:layout_constraintTop_toBottomOf="@id/title_about"
         tools:text="Welcome, User" />
@@ -48,6 +50,7 @@
         android:layout_margin="24dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
+        android:fontFamily="@font/montserrat_regular"
         android:text="Gambar yang ditampilkan menunjukkan sebuah ikon bergaya topeng kitsune, yaitu topeng rubah yang berasal dari budaya Jepang. Kitsune merupakan makhluk mitologis yang sering dikaitkan dengan kekuatan sihir, kecerdikan, serta kemampuan untuk berubah wujud."
         android:textColor="@color/white"
         android:textSize="14sp"

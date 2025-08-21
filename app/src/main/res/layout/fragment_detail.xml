@@ -21,7 +21,7 @@
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:fontFamily="@font/bubblegum" />
+            android:fontFamily="@font/montserrat_bold" />
 
         <!-- Image and Details Section -->
         <!-- Adjusted layout_weight and margins for better proportion -->
@@ -56,7 +56,7 @@
                     android:text="Type: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <TextView
                     android:layout_marginBottom="4sp"
@@ -66,7 +66,7 @@
                     android:text="Episodes: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <TextView
                     android:layout_marginBottom="4sp"
@@ -76,7 +76,7 @@
                     android:text="Demographic: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <TextView
                     android:layout_marginBottom="4sp"
@@ -86,7 +86,7 @@
                     android:text="Premiered: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <TextView
                     android:layout_marginBottom="4sp"
@@ -96,7 +96,7 @@
                     android:text="Studio: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <TextView
                     android:layout_marginBottom="4sp"
@@ -106,7 +106,7 @@
                     android:text="Genre: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <TextView
                     android:layout_marginBottom="4sp"
@@ -116,7 +116,7 @@
                     android:text="Source: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <TextView
                     android:layout_marginBottom="4sp"
@@ -126,7 +126,7 @@
                     android:text="Rating: "
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:fontFamily="@font/bubblegum" />
+                    android:fontFamily="@font/montserrat_regular" />
 
                 <!-- Rating Bar and Score -->
                 <LinearLayout
@@ -156,7 +156,7 @@
                         android:text="0.00"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
-                        android:fontFamily="@font/bubblegum" />
+                        android:fontFamily="@font/montserrat_regular" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -177,42 +177,48 @@
             android:text="Synopsis"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:fontFamily="@font/bubblegum" />
+            android:fontFamily="@font/montserrat_semibold" />
 
-        <!-- Use RelativeLayout to stack synopsis and gradient overlay -->
-        <RelativeLayout
+        <!-- FIX: Use a LinearLayout for the synopsis section to ensure vertical stacking -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginTop="4dp">
 
-            <TextView
-                android:id="@+id/animeSynopsis"
+            <!-- Use a FrameLayout to stack the synopsis text and the gradient overlay -->
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:justificationMode="inter_word"
-                android:maxLines="3"
-                android:text="Synopsis text will go here."
-                android:textColor="#FFFFFF"
-                android:fontFamily="@font/bubblegum" />
+                android:layout_height="wrap_content">
 
-            <!-- Gradient overlay for "Read More" effect -->
-            <ImageView
-                android:id="@+id/gradientOverlay"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignBottom="@id/animeSynopsis"
-                android:src="@drawable/gradient"
-                android:visibility="gone" />
+                <TextView
+                    android:id="@+id/animeSynopsis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:justificationMode="inter_word"
+                    android:maxLines="3"
+                    android:text="Synopsis text will go here."
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/montserrat_regular" />
 
-            <!-- "Read More" button for synopsis - positioned on top of gradient -->
+                <!-- The gradient overlay is now correctly positioned on top of the text -->
+                <ImageView
+                    android:id="@+id/gradientOverlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/gradient"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <!-- FIX: The "Read More" button is now positioned directly below the FrameLayout -->
             <TextView
                 android:id="@+id/btnReadMoreSynopsis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/animeSynopsis"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
                 android:paddingStart="0dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="0dp"
@@ -223,9 +229,9 @@
                 android:background="@null"
                 app:backgroundTint="@null"
                 android:visibility="gone"
-                android:fontFamily="@font/bubblegum" />
+                android:fontFamily="@font/montserrat_semibold" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <!-- Divider below synopsis -->
         <View
@@ -245,7 +251,7 @@
             android:text="Write Your Review"
             android:textColor="#FFFFFF"
             app:backgroundTint="@null"
-            android:fontFamily="@font/bubblegum" />
+            android:fontFamily="@font/montserrat_semibold" />
 
         <!-- Review Container (where individual review cards will be added) -->
         <LinearLayout
